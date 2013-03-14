@@ -1,5 +1,8 @@
 from datetime import datetime
 import sys
+import os
+
+prefix_template = os.environ.get('HONCHO_FORMAT', '{time} {name} | ')
 
 
 class Printer(object):
@@ -24,7 +27,7 @@ class Printer(object):
     def _prefix(self):
         time = datetime.now().strftime('%H:%M:%S')
         name = self.name.ljust(self.width)
-        prefix = '{time} {name} | '.format(time=time, name=name)
+        prefix = prefix_template.format(time=time, name=name)
         if self.colour:
             return _colour_string(self.colour, prefix)
         else:
