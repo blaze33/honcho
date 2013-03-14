@@ -46,6 +46,15 @@ FIXTURES = [
         """,
         {'web': 'sh -c "echo $FOOBAR" >/dev/null 2>&1'}
     ],
+    [
+        # Multiline
+        """
+        foo: command
+            parameter1
+            parameter2
+        """,
+        {'foo': 'command parameter1 parameter2'}
+    ],
 ]
 
 
